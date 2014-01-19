@@ -1,0 +1,18 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{positioning,automata}
+\begin{tikzpicture}[auto,
+                    node/.style={draw,circle,inner sep=2pt}]
+
+\node[node]                   (a) {$A$};                    
+\node[node, above right=of a] (b) {$B$};
+\node[node, below right=of a] (c) {$C$};
+\node[node, below right=of b] (d) {$D$};
+
+\path (a) edge node {$1$} (b) 
+      (c) edge node {$2$} (a) 
+      (c) edge node {$3$} (b) 
+      (b) edge node {$4$} (d) 
+      (d) edge node {$5$} (c);                 
+\end{tikzpicture}

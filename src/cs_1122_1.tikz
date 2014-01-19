@@ -1,0 +1,34 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usepackage{makecell}
+%p% \usetikzlibrary{arrows,automata,positioning}
+\begin{tikzpicture}[shorten >=1pt,node distance=3.5cm,on grid,auto,state/.style=state with output]
+\tikzset{every state/.style={inner sep=0mm}}
+  \node[state,initial,initial where=above] (0) {%
+    \makecell[c]{$0$\vspace{0.5em}} \nodepart{lower} %
+    \makecell[c]{$q_{0,1},q_{0,2},$\\$q_{0,3}$} %
+  };
+  \node[state]         (1) [below left=3.5cm and 3.5cm of 0] {%
+    \makecell[c]{$1$\vspace{0.5em}}\nodepart{lower} %
+    \makecell[c]{$q_{1,1},q_{1,2},$\\$q_{1,3}$}%
+  };
+  \node[state]         (2) [below=of 0]       {%
+    \makecell[c]{$2$\vspace{0.5em}} \nodepart{lower} %
+    \makecell[c]{$q_{2,1},q_{2,2},$\\$q_{2,3}$}%
+  };
+  \node[state]         (3) [below right=3.5cm and 3.5cm of 0] {%
+    \makecell[c]{$3$\vspace{0.5em}} \nodepart{lower} %
+    \makecell[c]{$q_{3,1},q_{3,2},$\\$q_{3,3}$}%
+  };
+
+  \path[->] (0) edge [bend right] node [swap] {$p_{0,1}$} (1)
+                edge []           node {$p_{0,2}$} (2)
+                edge [bend left]  node {$p_{0,3}$} (3)
+            (1) edge [bend right] node [swap] {$p_{1,2}$} (2)
+                edge [bend right=55]  node [] {$p_{1,3}$} (3)
+            (2) edge [bend right] node [swap] {$p_{2,1}$} (1)
+                edge [bend right] node [swap] {$p_{2,3}$} (3)
+            (3) edge [bend right] node [swap] {$p_{3,2}$} (2)
+                edge [bend left=75] node [] {$p_{3,1}$} (1);
+\end{tikzpicture}

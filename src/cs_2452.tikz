@@ -1,0 +1,56 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{positioning,patterns}
+%p% \usetikzlibrary{decorations.pathreplacing,decorations.pathmorphing}
+\tikzset{%
+  c1/.style={circle,draw,blue,pattern color=blue,pattern=horizontal lines,outer sep=5pt},
+  c2/.style={circle,draw,red,pattern color=red,pattern=vertical lines,outer sep=5pt},
+  c3/.style={circle,draw,green,pattern color=green,pattern=north east lines,outer sep=5pt},
+  c4/.style={circle,draw,orange,pattern color=orange,pattern=north west lines,outer sep=5pt}
+}
+\begin{tikzpicture}[node distance=.15cm]
+  \node[c1]                (b1) {};
+  \node[right=of b1]                     (bdo) {$\cdots$};
+  \node[c1,right=of bdo]   (b2) {};
+  \node[below=of bdo]                    (bdc) {$\vdots$};
+  \node[below=of bdc]                    (bdu) {$\cdots$};
+  \node[c1,left=of bdu]    (b3) {};
+  \node[c1,right=of bdu]   (b4) {};
+  \draw[semithick,decoration={brace,mirror},decorate]
+       (b2.north east) -- (b1.north west)
+       node [midway,yshift=5mm] {$\left\lfloor \frac{n}{4} \right\rfloor$};
+
+  \node[c2,right=of b2]     (r1) {};
+  \node[right=of r1]                     (rdo) {$\cdots$};
+  \node[c2,right=of rdo]    (r2) {};
+  \node[below=of rdo]                    (rdc) {$\vdots$};
+  \node[below=of rdc]                    (rdu) {$\cdots$};
+  \node[c2,left=of rdu]     (r3) {};
+  \node[c2,right=of rdu]    (r4) {};
+  \draw[semithick,decoration={brace,mirror},decorate]
+       (r2.north east) -- (r1.north west)
+       node [midway,yshift=5mm] {$\left\lceil \frac{n}{4} \right\rceil$};
+
+  \node[c3,right=of r2]   (g1) {};
+  \node[right=of g1]                     (gdo) {$\cdots$};
+  \node[c3,right=of gdo]  (g2) {};
+  \node[below=of gdo]                    (gdc) {$\vdots$};
+  \node[below=of gdc]                    (gdu) {$\cdots$};
+  \node[c3,left=of gdu]   (g3) {};
+  \node[c3,right=of gdu]  (g4) {};
+  \draw[semithick,decoration={brace,mirror},decorate]
+       (g2.north east) -- (g1.north west)
+       node [midway,yshift=5mm] {$\left\lfloor \frac{n}{4} \right\rfloor$};
+
+  \node[c4,right=of g2]  (o1) {};
+  \node[right=of o1]                     (odo) {$\cdots$};
+  \node[c4,right=of odo] (o2) {};
+  \node[below=of odo]                    (odc) {$\vdots$};
+  \node[below=of odc]                    (odu) {$\cdots$};
+  \node[c4,left=of odu]  (o3) {};
+  \node[c4,right=of odu] (o4) {};
+  \draw[semithick,decoration={brace,mirror},decorate]
+       (o2.north east) -- (o1.north west)
+       node [midway,yshift=5mm] {$\left\lceil \frac{n}{4} \right\rceil$};
+\end{tikzpicture}

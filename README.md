@@ -10,19 +10,21 @@ posts on Stack Exchange. They are canonically named `$site_$q.$type` where
  * `$type` is one of
 
    * dot     -- a graph description that can be converted into images using the free
-                graphviz suite, e.g. `dot -Tpng -ocs_411.png cs_411.dot`. Note
+                [graphviz](http://graphviz.org/) suite, e.g. `dot -Tpng -ocs_411.png cs_411.dot`. Note
                 that graph layout can differ wildly depending on the algorithm used.
 
    * gnuplot -- a plotting script that can be converted into images using the
-              free tool gnuplot, e.g. `gnuplot cs_654.gnuplot`.
+              free tool [gnuplot](http://gnuplot.info/), e.g. `gnuplot cs_654.gnuplot`.
 
    * tex     -- LaTeX documents; translate with `pdflatex` (or any other LaTeX
-              compiler). If you want to translate the resulting PDF into an
+              compiler). You may need some packages; generally, the latest [Tex Live](https://www.tug.org/texlive/)
+              should work.If you want to translate the resulting PDF into an
               image, consider Imagemagick's `convert`.
 
    * tikz    -- an image built with LaTeX package TikZ. Can be converted into images
               using scripts [`tikz2png` and `tikz2svg`](https://github.com/akerbos/scripts)
               by the same author.
+              You need a working LaTeX installation, preferably the latest [Tex Live](https://www.tug.org/texlive/).
               
 Have fun!
 

@@ -1,0 +1,41 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+\begin{tikzpicture}[scale=5,auto,every node/.style={scale=.9}]
+  \draw (0,4) rectangle ++(8,1)
+        \foreach \x in {2,...,7} {%
+          (\x+0.5,3) -- ++(0,1)
+        }
+        (2,2) rectangle ++(6,1) rectangle ++(1,-1)
+        \foreach \x in {5,...,8} {%
+          (\x+0.5,1) -- ++(0,1)
+        }
+        (5,0) rectangle ++(4,1);
+
+  \draw[dotted,opacity=.7] (8,4) rectangle ++(1,1)
+                           (8.5,3) -- ++(0,1);
+
+  \node at (4,4.5) {$P_{0,q}$};
+  \node at (5,2.5) {$P_{0,\pi_P(q)}$};
+  \node at (7,0.5) {$P_{0,s_2}$};
+  \node at (8.5,2.5) {$a$};
+  \node[opacity=.7] at (8.5,4.5) {$a$};
+
+  \path[<->] (0,2.5) edge node[scale=.7] {$>0$} node[scale=.65,swap] {minimal} ++(2,0)
+             (2,0.5) edge node[scale=.65,swap] {minimal} ++(3,0);
+  \draw[opacity=.5,dashed] (0,2.5) -- ++(0,1.5)
+                           (2,0.5) -- ++(0,1.5);
+
+  \draw (10,4) rectangle ++(8,1) rectangle ++(1,-1)
+        \foreach \x in {15,...,18} {%
+          (\x+0.5,1) -- ++(0,3)
+        }
+        (15,0) rectangle ++(4,1);
+
+  \node at (14,4.5) {$P_{0,q}$};
+  \node at (17,0.5) {$P_{0,s_1}$};
+  \node at (18.5,4.5) {$a$};
+
+  \path[<->] (10,0.5) edge node[scale=.7] {$>0$} node[scale=.65,swap] {minimal} ++(5,0);
+  \draw[opacity=.5,dashed] (10,0.5) -- ++(0,3.5)
+\end{tikzpicture}

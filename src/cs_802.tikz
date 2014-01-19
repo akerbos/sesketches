@@ -1,0 +1,41 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usepackage{xcolor}
+%p% \usetikzlibrary{positioning,patterns,backgrounds}
+%p% \usetikzlibrary{decorations.pathreplacing,decorations.pathmorphing}
+\begin{tikzpicture}[node distance=2cm,on grid,auto]
+  \node (S)                      {$S$};
+  \node (A)  [below of=S]        {$A$};
+
+  \node (b1) [below left=2cm and 1cm of A]  {};
+  \node (b2) [below right=2cm and 1cm of A] {};
+
+  \node (f2) [below left=1.5cm and .75cm of b1]  {};
+  \node (f1) [left of=f2]        {};
+  \node (f3) [below right=1.5cm and .75cm of b2] {};
+  \node (f4) [right of=f3]       {};
+
+  \draw[semithick,black,decoration={snake,amplitude=.3mm},decorate] (S) -- (A);
+  \draw[semithick,black,solid,fill=none] (S) -- (f4.center) -- (f1.center) -- (S);
+  \draw[semithick,black,dashed]          (f3.center) -- (b2.center);
+  \draw[semithick,black,dashed]          (f2.center) -- (b1.center);
+  \draw[semithick,black,dashdotted]      (A) -- (b2.center) -- (b1.center) -- (A);
+
+  \draw[semithick,decoration={brace,mirror},decorate]
+       (b1.south) -- (b2.south)
+       node [midway,swap,yshift=-.3mm] {$\beta$};
+
+  \begin{scope}[on background layer]
+    \def\before{(S) -- (A) -- (f2.center) -- (f1.center) -- (S)}
+    \fill [red!10] \before;
+    \pattern[pattern color=red!40, pattern=horizontal lines] \before;
+
+    \def\after{(S) -- (f4.center) -- (f3.center) -- (A) -- (S)}
+    \fill [blue!10] \after;
+    \pattern[pattern color=blue!40, pattern=vertical lines] \after;
+  \end{scope}
+
+  \node[red]  [above right=.3cm and 1.2cm of f1] {$\mathrm{Before}(\beta)$};
+  \node[blue] [above right=.3cm and 0.8cm of f3] {$\mathrm{After}(\beta)$};
+\end{tikzpicture}

@@ -1,0 +1,16 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{arrows,automata,positioning}
+\begin{tikzpicture}[node distance=2cm,on grid,auto,bend angle=10]
+  \node[state,initial,accepting] (0) {$0$};
+  \node[state,above right=1.5cm and 3cm of 0]  (1) {$1$};
+  \node[state,below right=1.5cm and 3cm of 0]  (2) {$2$};
+
+  \path[->] (0) edge [bend left] node {$a$} (1)
+                edge [bend left] node {$b$} (2)
+            (1) edge [bend left] node {$b$} (0)
+                edge [bend left] node {$a$} (2)
+            (2) edge [bend left] node {$a$} (0)
+                edge [bend left] node {$b$} (1);
+\end{tikzpicture}

@@ -1,0 +1,55 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{positioning}
+\newcommand{\starttile}[6]{%x,y,a,b,ai,bi
+  \node                    (a) at (#1,#2) {$#3$};
+  \node[below=1.1cm of a]  (b)            {$#4$};
+  \node[right=of a]        (ai)           {$#5$};
+  \node[right=of ai]       (bi)           {$#6$};
+  \draw (a.north west) -- (bi.north east) -- (bi.south east)
+                       -- (a.south east)  -- (b.south east)
+                       -- (b.south west)  -- cycle;
+}
+
+\newcommand{\tile}[8]{%x,y,ai,bi,a,b,ai,bi
+  \node                    (a) at (#1,#2) {$#5$};
+  \node[below=1.1cm of a]  (b)            {$#6$};
+  \node[left=of b]         (bi)           {$#4$};
+  \node[left=of bi]        (ai)           {$#3$};
+  \node[right=of a]        (ai2)          {$#7$};
+  \node[right=of ai2]      (bi2)         {$#8$};
+
+  \draw (a.north west) -- (a.north west)   -- (bi2.north east)
+                       -- (bi2.south east) -- (a.south east)
+                       -- (b.south east)   -- (ai.south west)
+                       -- (ai.north west)  -- (a.south west)
+                       -- (a.north west)   -- cycle;
+}
+
+\newcommand{\stoptile}[6]{%x,y,ai,bi,a,b
+  \node                    (a) at (#1,#2) {$#5$};
+  \node[below=1.1cm of a]  (b)            {$#6$};
+  \node[left=of b]         (bi)           {$#4$};
+  \node[left=of bi]        (ai)           {$#3$};
+
+  \draw (a.north west) -- (a.north east)  -- (b.south east)
+                       -- (ai.south west) -- (ai.north west)
+                       -- (b.north west)  -- cycle;
+}
+
+\tikzset{%
+  every node/.style={outer sep=0.2cm,minimum width=1cm,minimum height=0.7cm}
+}
+
+\begin{tikzpicture}[node distance=1.5cm,on grid,auto]
+  \starttile{0}{0}{a_1}{*}{1}{0}%
+  \starttile{80}{0}{*}{b_1}{0}{1}%
+  \starttile{160}{0}{a_1}{b_1}{1}{1}%
+  \tile{0}{-30}{i-1}{j}{a_i}{*}{i}{j}%
+  \tile{80}{-30}{i}{j-1}{*}{b_j}{i}{j}%
+  \tile{160}{-30}{i-1}{j-1}{a_i}{b_j}{i}{j}%
+  \stoptile{0}{-60}{n-1}{m}{a_n}{*}%
+  \stoptile{80}{-60}{n}{m-1}{*}{b_m}%
+  \stoptile{160}{-60}{n-1}{m-1}{a_n}{b_m}%
+\end{tikzpicture}

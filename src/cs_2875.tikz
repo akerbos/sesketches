@@ -1,0 +1,73 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{positioning,fit}
+%p% \usepackage{pgflibraryshapes}
+
+
+\newcommand{\xscaler}{10}
+\newcommand{\yscaler}{15}
+
+\begin{tikzpicture}[auto]
+  % Actual tree
+  \tikzset{ every node/.style={draw,circle,densely dotted} }
+  \node (i)  at (5.5*\xscaler,2*\yscaler) {$I$};
+  
+  \node (a1) at (2*\xscaler,\yscaler)    {$A$};
+  \node (a2) at (3*\xscaler,\yscaler)    {$A$};
+  \node (a3) at (4*\xscaler,\yscaler)    {$A$};
+  \node (b1) at (9*\xscaler,\yscaler)  {$B$};
+  \node (b2) at (10*\xscaler,\yscaler) {$B$};
+    
+  \node (c1) at (0*\xscaler,0)  {$C$};
+  \node (c2) at (1*\xscaler,0)  {$C$};
+  \node (c3) at (2*\xscaler,0)  {$C$};
+  \node (d1) at (4*\xscaler,0)  {$D$};
+  \node (d2) at (5*\xscaler,0)  {$D$};
+  \node (d3) at (6*\xscaler,0)  {$D$};
+  \node (c4) at (8*\xscaler,0)  {$C$};
+  \node (c5) at (9*\xscaler,0)  {$C$};
+  \node (d4) at (11*\xscaler,0) {$D$};
+  
+  \path[->,densely dotted] (i) edge (a1)
+                               edge (a2)
+                               edge (a3)
+                               edge (b1)
+                               edge [bend left=10] (b2)
+                            (a1) edge (c1)
+                                 edge (c2)
+                                 edge (d1)
+                            (a2) edge (c3)
+                                 edge (d2)
+                            (a3) edge (d3)
+                            (b1) edge (c4)
+                            (b2) edge (c5)
+                                 edge (d4);
+  
+  % Overlay tree
+  \tikzset{ every node/.style={draw=green!50!black,ellipse,transform shape} }
+  \node[fit=(i)]            (I)  {};
+  \node[fit=(a1) (a2) (a3)] (A)  {}; 
+  \node[fit=(b1) (b2)]      (B)  {};
+  \node[fit=(c1) (c2) (c3)] (C1) {};
+  \node[fit=(d1) (d2) (d3)] (D1) {};
+  \node[fit=(c4) (c5)]      (C2) {};
+  \node[fit=(d4)]           (D2) {};
+  
+  \tikzset{ every node/.style={text=green!50!black} }
+  
+  \path[->,green!50!black] (I) edge [bend right=20] node[swap]       {$3$} (A.north)
+                               edge [bend left=20]  node             {$2$} (B.north)
+                           (A) edge [bend right=5]  node[near start] {$3$} (C1)
+                               edge [bend left=10]  node[near end]   {$3$} (D1)
+                           (B) edge [bend right=20] node[near start] {$2$} (C2)
+                               edge [bend right=20] node[swap]       {$1$} (D2);
+  
+  \node[above left=-0.1cm of I.north west]   {$I$};
+  \node[above left=-0.1cm of A.north west]   {$A$};
+  \node[above right=-0.1cm of B.north east]  {$B$};
+  \node[above left=-0.1cm of C1.north west]  {$C$};
+  \node[above right=-0.1cm of D1.north east] {$D$};
+  \node[above left=-0.1cm of C2.north west]  {$C$};
+  \node[above right=-0.1cm of D2.north east] {$D$};
+\end{tikzpicture}

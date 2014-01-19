@@ -1,0 +1,24 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{positioning,automata}
+\begin{tikzpicture}[auto]
+
+\foreach \x in {0,30,60,90} {
+  \foreach \angle [evaluate=\angle as \mix using \angle*10] in {1,...,6} {%
+    \filldraw[fill=red!\mix!yellow] (\x,0) -- +(60*\angle - 60:10cm)
+                arc [start angle=60*\angle-60,delta angle=60,radius=10cm]
+                -- cycle;
+  }
+}
+
+\filldraw[fill=red!70!yellow] (30,0) circle[radius=3.78];
+
+\filldraw[fill=red!80!yellow] (60,0) circle[radius=5];
+\filldraw[fill=red!70!yellow] (60,0) circle[radius=3.54];
+
+\filldraw[fill=red!90!yellow] (90,0) circle[radius=5.77];
+\filldraw[fill=red!80!yellow] (90,0) circle[radius=4.71];
+\filldraw[fill=red!70!yellow] (90,0) circle[radius=3.33];
+
+\end{tikzpicture}

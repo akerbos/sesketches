@@ -1,0 +1,38 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{positioning,calc}
+
+\newcommand{\elem}[2]{\draw (#1) rectangle +(8,-4);    \node at ($ (#1) + (4,-2) $) {$#2$};}
+\newcommand{\bigelem}[2]{\draw (#1) rectangle +(8,-8); \node at ($ (#1) + (4,-3) $) {$#2$};}
+
+\begin{tikzpicture}[auto]
+
+\elem{0,0}{h_l}
+\elem{0,-4}{x_l}
+\bigelem{0,-8}{\vdots}
+\elem{0,-16}{\$}
+
+\elem{9,0}{h_r}
+\elem{9,-4}{x_r}
+\bigelem{9,-8}{\vdots}
+\elem{9,-16}{\$}
+
+\node at (23,-4) {$\to_{\delta'}$};
+
+\elem{29,12}{l_1}
+\bigelem{29,8}{\vdots}
+\elem{29,0}{l_i}
+\elem{29,-4}{x_l}
+\bigelem{29,-8}{\vdots}
+\elem{29,-16}{\$}
+
+\elem{38,12}{r_1}
+\bigelem{38,8}{\vdots}
+\elem{38,0}{r_j}
+\elem{38,-4}{x_r}
+\bigelem{38,-8}{\vdots}
+\elem{38,-16}{\$}
+
+
+\end{tikzpicture}

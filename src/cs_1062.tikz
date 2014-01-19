@@ -1,0 +1,46 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{arrows,automata,positioning}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,bend angle=45,on grid,auto]
+   \node[state] (n0)                 {$u_1$};
+   \node[state] (n2)  [right of=n0]  {$u_2$};
+   \node[state] (n4)  [right of=n2]  {$u_3$};
+   \node        (d1)  [right of=n4]  {$\dots$};
+   \node[state] (n6)  [right of=d1]  {$u_{k}$};
+   \node[state] (n8)  [below of=n6]  {};
+   \node        (d2)  [left of=n8]   {$\dots$};
+   \node[state] (n10) [left of=d2]   {$c_1$};
+   \node[state] (n12) [left of=n10]  {};
+   \node[state] (n)   [below of=n12] {};
+   \node[state] (n11) [right of=n]   {$c_2$};
+   \node        (d3)  [right of=n11] {$\dots$};
+   \node[state] (n9)  [right of=d3]  {};
+   \node[state] (n7)  [below of=n9]  {$b_k$};
+   \node        (d4)  [left of=n7]   {$\dots$};
+   \node[state] (n5)  [left of=d4]   {$b_3$};
+   \node[state] (n3)  [left of=n5]   {$b_2$};
+   \node[state] (n1)  [left of=n3]   {$b_1$};
+
+   \path[-]  (n0)  edge node {$1$} (n2)
+             (n2)  edge node {$3$} (n4)
+             (n4)  edge node {$5$} (d1)
+             (d1)  edge node {$\frac{n-1}{2} - 1$}       (n6)
+             (n6)  edge node [left] {$\frac{n-1}{2} +1$} (n8)
+             (n8)  edge node {$\frac{n-1}{2} + 3$}       (d2)
+             (d2)  edge node {$n-4$} (n10)
+             (n10) edge node {$n-2$} (n12)
+             (n12) edge node {$n$}   (n)
+             (n)   edge node {$n-1$} (n11)
+             (n11) edge node {$n-3$} (d3)
+             (d3)  edge node {$\frac{n-1}{2} + 2$}    (n9)
+             (n9)  edge node [left] {$\frac{n-1}{2}$} (n7)
+             (n7)  edge node {$\frac{n-1}{2} - 2$}    (d4)
+             (d4)  edge node {$6$} (n5)
+             (n5)  edge node {$4$} (n3)
+             (n3)  edge node {$2$} (n1);
+
+    \path[-] (n6)  edge [bend left, dashed] node {$n+1$} (n7);
+\end{tikzpicture}
+
+

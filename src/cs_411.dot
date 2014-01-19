@@ -1,0 +1,19 @@
+# Raphael Reitzig, 2012.
+# MIT license
+
+# Use 'circo'
+digraph ss {
+  a [label="",shape=circle,style=filled];
+  b [label="",shape=circle,style=filled];
+  c [label="",shape=circle,style=filled];
+  d [label="",shape=circle,style=filled];
+  e [label="",shape=circle];
+
+  a -> e;
+  b -> e;
+  c -> e;
+  d -> e;
+  a -> b -> c -> d;
+  c -> b;
+  d -> a;
+}

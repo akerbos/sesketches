@@ -1,0 +1,16 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{positioning,automata}
+\begin{tikzpicture}[auto]
+  \node[state,initial,accepting] (a) {};
+  \node[state,right=of a] (b) {};
+  \node[state,below=of a] (c) {};
+  \node[state,accepting,right=of c] (d) {};
+  
+  \path[->] (a) edge[bend left] node {$a$} (b)
+            (b) edge[bend left] node {$b$} (a)
+            (a) edge node[swap] {$a$} (c)
+            (c) edge[bend left] node {$c$} (d)
+            (d) edge[bend left] node {$a$} (c);
+\end{tikzpicture}

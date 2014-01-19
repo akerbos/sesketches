@@ -1,0 +1,33 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{positioning,automata,calc}
+\begin{tikzpicture}[auto,
+                    autom/.style={draw,rectangle,inner sep=20pt}]
+  \node[state,initial] (0) {$q_0$};
+  \node[autom, above right=0.15 and 1 of 0] (a1) {$A_1$};
+  \node[autom, below right=0.15 and 1 of 0] (a2) {$A_2$};
+  \node[state,right= 1 of a1] (middle1) {$q_{m1}$};
+  \node[autom,right=of middle1] (f1) {$F$};
+  \node[state,accepting,right=of f1] (e1) {$q_{e1}$};
+  \node[state,right= 1 of a2] (middle2) {$q_{m2}$};
+  \node[autom,right=of middle2] (f2) {$F$};
+  \node[state,accepting,right=of f2] (e2) {$q_{e2}$};
+
+  \path[-stealth]
+    (0) edge[bend left] node[above] {$\varepsilon$} (a1)
+    (0) edge[bend right] node[below] {$\varepsilon$} (a2)
+    (a1) edge node[above] {$\varepsilon$} (middle1)
+    (a2) edge node[below] {$\varepsilon$} (middle2)
+    (middle1) edge node[above] {$\varepsilon$} (f1)
+    (f1) edge node[above] {$\varepsilon$} (e1)
+    (middle2) edge node[above] {$\varepsilon$} (f2)
+    (f2) edge node[above] {$\varepsilon$} (e2);
+
+  \draw (e1) |- ($(f1.north) + (0,2)$)
+        (e2) |- ($(f2.south) - (0,2)$);
+  \draw[-stealth] ($(f1.north) + (0,2)$) -| (middle1);
+  \draw[-stealth] ($(f2.south) - (0,2)$) -| (middle2);
+  \node[above=0.2 of f1.north] {$\varepsilon$};
+  \node[below=0.2 of f2.south] {$\varepsilon$};
+\end{tikzpicture}

@@ -1,0 +1,92 @@
+/* Raphael Reitzig, 2012.
+   MIT license
+*/
+
+body {
+  background-color : #F6F6F6; /* #D3D3D3; */
+  color : #232323;
+  font-family : sans-serif;
+}
+
+a {
+  color : #232323;
+}
+
+a:hover {
+  text-decoration : none;
+  color : #2323DD;
+}
+
+div#main {
+  width : 950px;
+  text-align : left;
+  margin : 30px auto 0 auto;
+}
+
+h1 {
+  font-family : sans-serif;
+}
+
+h2 {
+  font-family : sans-serif;
+}
+
+div#gallery table {
+  border-spacing : 3pt;
+}
+
+div.entry {
+  width : 160px;
+  height : 175px;
+  padding : 5pt;
+  border : 1pt solid #333333;
+  border-radius : 3pt;
+  background-color : #EAEAEA; /* #F0F0F0; */
+}
+
+div.entry p {
+  margin : 5pt auto 0 auto;
+  text-align : center;
+  font-size : small;
+}
+
+div.entry p a {
+  text-decoration : none;
+}
+
+div.entry p a:hover {
+  text-decoration : underline;
+}
+
+div.thumbbox {
+  margin : auto;
+  width : 150px;
+  height : 150px;
+  line-height : 150px;
+  text-align : center;
+  display :table;
+}
+
+div.thumbbox span {
+  display:table-cell;
+  vertical-align:middle;
+}
+
+img.thumb {
+  max-width : 150px;
+  max-height : 150px;
+}
+
+div#readme {
+  text-align : left;
+}
+
+div#license {
+  text-align : center;
+  margin : 20px 10px 0 10px;
+  font-size : small;
+}
+
+div#license img {
+  margin : 5pt;
+}

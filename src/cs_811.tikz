@@ -1,0 +1,42 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{arrows,automata,positioning}
+\begin{tikzpicture}[shorten >=1pt,node distance=1.5cm,on grid,auto]
+  \node[state] (s1) at (0,5)      {$s_1$};
+  \node[state] (s2) [below of=s1] {$s_2$};
+  \node[state] (s3) [below of=s2] {$s_3$};
+  \node[state] (s4) [below of=s3] {$s_4$};
+  
+  \node[state] (o1) [left of=s1]  {$o_1$};
+  \node[state] (o2) [left of=s2]  {$o_2$};
+  \node[state] (o3) [left of=s3]  {$o_3$};
+  \node[state] (o4) [left of=s4]  {$o_4$};
+
+  \node[state] (e1) at (20,12)    {$e_1$};
+  \node[state] (e2) [below of=e1] {$e_2$};
+  \node[state] (e3) [below of=e2] {$e_3$};
+  \node[state] (e4) [below of=e3] {$e_4$};
+  \node[state] (e5) [below of=e4] {$e_5$};
+
+  \node[state] (o) at (40,-18) {$o$};
+
+  \path[->] (s1)  edge (e1)
+                  edge (e2)
+                  edge (e3)
+                  edge (o1)
+             (s2) edge (e2)
+                  edge (e4)
+                  edge (o2)
+             (s3) edge (e3)
+                  edge (e4)
+                  edge (o3)
+             (s4) edge (e4)
+                  edge (e5)
+                  edge (o4)
+             (e1) edge (o)
+             (e2) edge (o)
+             (e3) edge (o)
+             (e4) edge (o)
+             (e5) edge (o);
+\end{tikzpicture}

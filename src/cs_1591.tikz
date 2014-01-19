@@ -1,0 +1,17 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{positioning}
+\begin{tikzpicture}
+  \node[circle,draw] (s) {$s$};
+  \node[circle,draw] (o) [above right=of s] {};
+  \node[circle,draw] (u) [below right=of s] {};
+  \node[circle,draw] (v) [below right=of o] {};
+  \node[circle,draw] (t) [right=of v] {$t$};
+  
+  \draw[--] (s) edge node [above left]  {$1$} (o)
+            (o) edge node [above right] {$1$} (v)
+            (s) edge node [below left]  {$2$} (u)
+            (u) edge node [below right] {$2$} (v)
+            (v) edge node [above]       {$1$} (t);
+\end{tikzpicture}

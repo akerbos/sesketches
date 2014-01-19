@@ -1,0 +1,107 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+% Get an image by compiling to PDF and then:
+% > convert -density 600 cs_1016.pdf -append cs_1016.png
+% > mogrify -resize "900>x" cs_1016.png
+% For an animation, do:
+% > convert -density 600 -loop 1 -delay 500 cs_1016.pdf cs_1016.gif
+% > mogrify -resize "600>x" cs_1016.gif
+
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor,tikz,xifthen}
+\usepackage[paperwidth=12.5cm,paperheight=6.5cm,margin=.5cm]{geometry}
+\usetikzlibrary{positioning}
+
+\newcommand{\ifin}[4]{% elem, list, then, else
+  \ifthenelse{\isin{!#1!}{#2}}{#3}{#4}%
+}
+
+\tikzset{%
+  active/.style={fill=yellow!30},
+  unvisited/.style={opacity=.2},
+  hidden/.style={opacity=0},
+  lb/.style={color=green!70!black,scale=.7},
+  ub/.style={color=red!70!black,scale=.7},
+  % Nodes:
+  xxxxcfg/.code={\ifin{#1}{!1!2!8!}{\tikzset{active}}{}},
+  1xxxcfg/.code={\ifin{#1}{!1!}{\tikzset{hidden}}{%
+                 \ifin{#1}{!2!}{\tikzset{unvisited}}{%
+                 \ifin{#1}{!3!7!}{\tikzset{active}}{}}}},
+  2xxxcfg/.code={\ifin{#1}{!1!}{\tikzset{hidden}}{\tikzset{unvisited}}},
+  3xxxcfg/.code={\ifin{#1}{!1!}{\tikzset{hidden}}{\tikzset{unvisited}}},
+  4xxxcfg/.code={\ifin{#1}{!1!}{\tikzset{hidden}}{\tikzset{unvisited}}},
+  12xxcfg/.code={\ifin{#1}{!1!2!}{\tikzset{hidden}}{\tikzset{unvisited}}},
+  13xxcfg/.code={\ifin{#1}{!1!2!}{\tikzset{hidden}}{%
+                 \ifin{#1}{!3!}{\tikzset{unvisited}}{%
+                 \ifin{#1}{!4!6!}{\tikzset{active}}{}}}},
+  14xxcfg/.code={\ifin{#1}{!1!2!}{\tikzset{hidden}}{\tikzset{unvisited}}},
+  1324cfg/.code={\ifin{#1}{!1!2!3!}{\tikzset{hidden}}{\tikzset{unvisited}}},
+  1342cfg/.code={\ifin{#1}{!1!2!3!}{\tikzset{hidden}}{%
+                 \ifin{#1}{!4!}{\tikzset{unvisited}}{%
+                 \ifin{#1}{!5!}{\tikzset{active}}{}}}},
+  % Bound labels:
+  xxxxlb/.code={\tikzset{lb}},
+  xxxxub/.code={\ifthenelse{#1<8}{\tikzset{hidden}}{\tikzset{ub}}},
+  1xxxlb/.code={\ifthenelse{#1<2}{\tikzset{hidden}}{\tikzset{lb}}},
+  1xxxub/.code={\ifthenelse{#1<7}{\tikzset{hidden}}{\tikzset{ub}}},
+  2xxxlb/.code={\ifthenelse{#1<2}{\tikzset{hidden}}{\tikzset{lb}}},
+  3xxxlb/.code={\ifthenelse{#1<2}{\tikzset{hidden}}{\tikzset{lb}}},
+  4xxxlb/.code={\ifthenelse{#1<2}{\tikzset{hidden}}{\tikzset{lb}}},
+  12xxlb/.code={\ifthenelse{#1<3}{\tikzset{hidden}}{\tikzset{lb}}},
+  13xxlb/.code={\ifthenelse{#1<3}{\tikzset{hidden}}{\tikzset{lb}}},
+  13xxub/.code={\ifthenelse{#1<6}{\tikzset{hidden}}{\tikzset{ub}}},
+  14xxlb/.code={\ifthenelse{#1<3}{\tikzset{hidden}}{\tikzset{lb}}},
+  1324lb/.code={\ifthenelse{#1<4}{\tikzset{hidden}}{\tikzset{lb}}},
+  1342lb/.code={\ifthenelse{#1<4}{\tikzset{hidden}}{\tikzset{lb}}},
+  1342ub/.code={\ifthenelse{#1<5}{\tikzset{hidden}}{\tikzset{ub}}},
+}
+
+\newcommand{\image}[1]{%
+  \centering
+  \begin{tikzpicture}[level 1/.style={sibling distance=22mm}]
+    \node[xxxxcfg=#1] (xxxx) {$[*\ *\ *\ *]$}
+      child [1xxxcfg=#1] { node [1xxxcfg=#1] (1xxx) {$[1\ *\ *\ *]$}
+                child [12xxcfg=#1] { node [12xxcfg=#1] (12xx) {$[1\ 2\ *\ *]$} }
+                child [13xxcfg=#1] { node [13xxcfg=#1] (13xx) {$[1\ 3\ *\ *]$}
+                          child [1324cfg=#1] { node [1324cfg=#1] (1324) {$[1\ 3\ 2\ 4]$} }
+                          child [1342cfg=#1] { node [1342cfg=#1] (1342) {$[1\ 3\ 4\ 2]$} }
+                      }
+                child [14xxcfg=#1] { node [14xxcfg=#1] (14xx) {$[1\ 4\ *\ *]$} }
+            }
+      child [2xxxcfg=#1] { node [2xxxcfg=#1] (2xxx) {$[2\ *\ *\ *]$} }
+      child [3xxxcfg=#1] { node [3xxxcfg=#1] (3xxx) {$[3\ *\ *\ *]$} }
+      child [4xxxcfg=#1] { node [4xxxcfg=#1] (4xxx) {$[4\ *\ *\ *]$} };
+
+    \node[xxxxlb=#1,below right=-3.5mm and -2mm of xxxx] {$5$};
+    \node[xxxxub=#1,above right=-3.5mm and -2mm of xxxx] {$5$};
+
+    \node[1xxxlb=#1,below right=-3.5mm and -2mm of 1xxx] {$5$};
+    \node[1xxxub=#1,above right=-3.5mm and -2mm of 1xxx] {$5$};
+
+    \node[13xxlb=#1,below right=-3.5mm and -2mm of 13xx] {$5$};
+    \node[13xxub=#1,above right=-3.5mm and -2mm of 13xx] {$5$};
+
+    \node[1342lb=#1,below right=-3.5mm and -2mm of 1342] {$5$};
+    \node[1342ub=#1,above right=-3.5mm and -2mm of 1342] {$5$};
+
+    \node[2xxxlb=#1,below right=-3.5mm and -2mm of 2xxx] {$7$};
+    \node[3xxxlb=#1,below right=-3.5mm and -2mm of 3xxx] {$8$};
+    \node[4xxxlb=#1,below right=-3.5mm and -2mm of 4xxx] {$8$};
+    \node[12xxlb=#1,below right=-3.5mm and -2mm of 12xx] {$6$};
+    \node[14xxlb=#1,below right=-3.5mm and -2mm of 14xx] {$6$};
+    \node[1324lb=#1,below right=-3.5mm and -2mm of 1324] {$7$};
+
+    \node[right=3cm of xxxx,scale=.7] {$#1$};
+  \end{tikzpicture}
+  \clearpage
+}
+
+\begin{document}
+
+\foreach \n in {1,...,9}{%
+  \expandafter\image\expandafter{\n}
+}
+
+\end{document}

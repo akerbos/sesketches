@@ -1,0 +1,12 @@
+# Raphael Reitzig, 2012.
+# MIT license
+
+# Use 'dot'
+graph g1 {
+  r [label="",shape=circle,style=filled,color=black];
+  l11 [label="",shape=circle,style=filled,color=red];
+  l12 [label="",shape=circle,style=filled,color=red];
+
+  r -- l11;
+  r -- l12;
+}

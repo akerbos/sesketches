@@ -1,0 +1,15 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{positioning}
+\begin{tikzpicture}[auto]
+  \node[draw, circle] (s) at (00,15) {$s$};
+  \node[draw, circle] (a) at (15,15) {$a$};
+  \node[draw, circle] (b) at (15,00) {$b$};
+  \node[draw, circle] (t) at (00,00) {$t$};
+  
+  \path[->] (s) edge node {$1$} (a)
+            (s) edge node {$2$} (t)
+            (a) edge node {$1$} (b)
+            (b) edge node {$1$} (t);
+\end{tikzpicture}

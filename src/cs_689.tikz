@@ -1,0 +1,18 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{arrows,automata,positioning}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto,bend angle=45]
+  \node[state,initial]    (q_0)                {$q_0$};
+  \node[state,accepting]  (q_1) [right of=q_0] {$q_1$};
+  \node[state,accepting]  (q_2) [right of=q_1] {$q_2$};
+  \node[state,accepting]  (q_3) [right of=q_2] {$q_3$};
+  \node[state,accepting]  (q_4) [right of=q_3] {$q_4$};
+
+  \path[->] (q_0) edge              node {$x$} (q_1)
+            (q_1) edge              node {$f$} (q_2)
+            (q_2) edge              node {$g$} (q_3)
+            (q_3) edge [bend right] node [swap] {$i$} (q_1)
+                  edge              node {$h$} (q_4)
+            (q_4) edge [bend left]  node {$j$} (q_2);
+\end{tikzpicture}

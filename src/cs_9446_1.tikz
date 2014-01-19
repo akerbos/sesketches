@@ -1,0 +1,25 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{positioning,automata,calc}
+\begin{tikzpicture}[auto,
+                    autom/.style={draw,rectangle,inner sep=20pt}]
+  \node[state,initial] (0) {$q_0$};
+  \node[autom, above right=0.15 and 1 of 0] (a1) {$A_1$};
+  \node[autom, below right=0.15 and 1 of 0] (a2) {$A_2$};
+  \node[state,below right=0.5 and 1 of a1] (middle) {$q_m$};
+  \node[autom,right=of middle] (f) {$F$};
+  \node[state,accepting,right=of f] (e) {$q_e$};
+
+  \path[-stealth]
+    (0) edge[bend left] node[above] {$\varepsilon$} (a1)
+    (0) edge[bend right] node[below] {$\varepsilon$} (a2)
+    (a1) edge[bend left] node[above] {$\varepsilon$} (middle)
+    (a2) edge[bend right] node[below] {$\varepsilon$} (middle)
+    (middle) edge node[above] {$\varepsilon$} (f)
+    (f) edge node[above] {$\varepsilon$} (e);
+
+  \draw (e) |- ($(f.north) + (0,2)$);
+  \draw[-stealth] ($(f.north) + (0,2)$) -| (middle);
+  \node[above=0.2 of f.north] {$\varepsilon$};
+\end{tikzpicture}

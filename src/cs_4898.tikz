@@ -1,0 +1,30 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{automata,positioning,calc}
+%p% \usetikzlibrary{decorations.pathreplacing,decorations.pathmorphing}
+
+\begin{tikzpicture}[auto]
+  \node[state] (a) at (0,0) {$1$};
+  \node[state,below=of a] (b) {$2$};
+  \node[below=of b] (vdots) {$\vdots$};
+  \node[state,below=of vdots] (c) {$k-1$};
+  
+  \node[state,right=of vdots] (c1) {};
+  \node[state,right=of c1] (c2) {};
+  \node[right=of c2] (c3) {$\ldots$};
+  \node[state,right=of c3] (c4) {};
+  \draw[semithick,decoration={brace,mirror},decorate]
+       ($(c1.south west) - (0,3)$) -- ($(c4.south east) - (0,3)$)
+       node [midway,swap,yshift=-.3mm] {$k$};
+  
+  \node[state,right=of c4] (d) {$k$};
+  
+  \path[-] (a) edge node {$2$} (c1)
+           (b) edge node {$2$} (c1)
+           (c) edge node {$2$} (c1)
+           (c1) edge node {$1$} (c2)
+           (c2) edge node {$1$} (c3)
+           (c3) edge node {$1$} (c4)
+           (c4) edge node {$2$} (d);
+\end{tikzpicture}

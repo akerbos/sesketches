@@ -1,0 +1,32 @@
+# Raphael Reitzig, 2012.
+# MIT license
+
+# Use 'dot'
+graph cs421 {
+  n11 [label="",shape=circle,style=filled,color=black];
+
+  n21 [label="",shape=circle,style=filled,color=black];
+  n22 [label="",shape=circle,style=filled,color=black];
+
+  n31 [label="",shape=circle,style=filled,color=black];
+  n32 [label="",shape=circle,style=filled,color=black];
+  n33 [label="",shape=circle,style=filled,color=black];
+  n34 [label="",shape=circle,style=filled,color=black];
+
+  n41 [label="",shape=circle,style=filled,color=black];
+  n42 [label="",shape=circle,style=filled,color=black];
+  n43 [label="",shape=circle,style=filled,color=black];
+  n44 [label="",shape=circle,style=filled,color=black];
+  n45 [label="",shape=circle,style=filled,color=black];
+  n46 [label="",shape=circle,style=filled,color=black];
+  n47 [label="",shape=circle,style=filled,color=black];
+
+  n21 -- n22;
+
+  n31 -- n32 -- n33;
+  n31 -- n34;
+
+  n41 -- n42 -- n43 -- n44;
+  n42 -- n45;
+  n41 -- n46 -- n47;
+}

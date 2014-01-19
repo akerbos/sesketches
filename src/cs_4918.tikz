@@ -1,0 +1,19 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{positioning}
+\begin{tikzpicture}[level 1/.style={sibling distance=10cm},level distance=10cm]
+  \node[draw,circle] (or1) {$\lor$}
+    child { node[draw,circle] {$\varphi_1$} }
+    child { node[draw,circle] {$\lor$} 
+              child { node[draw,circle] {$\varphi_2$} }
+              child { node[draw,circle] {$\varphi_3$} }
+          };
+
+  \node[draw,circle,right=3cm of or1] {$\lor$}
+    child { node[draw,circle] {$\lor$}
+              child { node[draw,circle] {$\varphi_1$} }
+              child { node[draw,circle] {$\varphi_2$} }
+          }
+    child { node[draw,circle] {$\varphi_3$} };
+\end{tikzpicture}

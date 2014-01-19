@@ -1,0 +1,77 @@
+# Raphael Reitzig, 2012.
+# MIT license
+
+# Use 'dot'
+graph g3 {
+  r [label="",shape=circle,style=filled,color=black];
+  l11 [label="",shape=circle,style=filled,color=red];
+  l12 [label="",shape=circle,style=filled,color=black];
+  l21 [label="",shape=circle,style=filled,color=black];
+  l22 [label="",shape=circle,style=filled,color=black];
+  l23 [label="",shape=circle,style=filled,color=black];
+  l24 [label="",shape=circle,style=filled,color=black];
+  l31 [label="",shape=circle,style=filled,color=red];
+  l32 [label="",shape=circle,style=filled,color=red];
+  l33 [label="",shape=circle,style=filled,color=red];
+  l34 [label="",shape=circle,style=filled,color=red];
+  l41 [label="",shape=circle,style=filled,color=black];
+  l42 [label="",shape=circle,style=filled,color=black];
+  l43 [label="",shape=circle,style=filled,color=black];
+  l44 [label="",shape=circle,style=filled,color=black];
+  l45 [label="",shape=circle,style=filled,color=black];
+  l46 [label="",shape=circle,style=filled,color=black];
+  l47 [label="",shape=circle,style=filled,color=black];
+  l48 [label="",shape=circle,style=filled,color=black];
+  l51 [label="",shape=circle,style=filled,color=red];
+  l52 [label="",shape=circle,style=filled,color=red];
+  l53 [label="",shape=circle,style=filled,color=red];
+  l54 [label="",shape=circle,style=filled,color=red];
+  l55 [label="",shape=circle,style=filled,color=red];
+  l56 [label="",shape=circle,style=filled,color=red];
+  l57 [label="",shape=circle,style=filled,color=red];
+  l58 [label="",shape=circle,style=filled,color=red];
+  l59 [label="",shape=circle,style=filled,color=red];
+  l510 [label="",shape=circle,style=filled,color=red];
+  l511 [label="",shape=circle,style=filled,color=red];
+  l512 [label="",shape=circle,style=filled,color=red];
+  l513 [label="",shape=circle,style=filled,color=red];
+  l514 [label="",shape=circle,style=filled,color=red];
+  l515 [label="",shape=circle,style=filled,color=red];
+  l516 [label="",shape=circle,style=filled,color=red];
+
+
+  r -- l11;
+  r -- l12;
+  l11 -- l21;
+  l11 -- l22;
+  l12 -- l23;
+  l12 -- l24;
+  l21 -- l31;
+  l21 -- l32;
+  l22 -- l33;
+  l22 -- l34;
+  l31 -- l41;
+  l31 -- l42;
+  l32 -- l43;
+  l32 -- l44;
+  l33 -- l45;
+  l33 -- l46;
+  l34 -- l47;
+  l34 -- l48;
+  l41 -- l51;
+  l41 -- l52;
+  l42 -- l53;
+  l42 -- l54;
+  l43 -- l55;
+  l43 -- l56;
+  l44 -- l57;
+  l44 -- l58;
+  l45 -- l59;
+  l45 -- l510;
+  l46 -- l511;
+  l46 -- l512;
+  l47 -- l513;
+  l47 -- l514;
+  l48 -- l515;
+  l48 -- l516;
+}

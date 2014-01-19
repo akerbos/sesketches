@@ -1,0 +1,34 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{positioning,automata}
+\begin{tikzpicture}[auto,every node/.style={draw,circle}]
+  \node (s) {$s$};
+  \node[above right=of s] (u1) {};
+  \node[below right=of s] (d1) {};
+  \node[right=of u1] (u2) {};
+  \node[right=of d1] (d2) {};
+  \node[right=of u2,draw=none] (udots) {$\dots$};
+  \node[below right=of u2,draw=none] (dots) {$\dots$};
+  \node[right=of d2,draw=none] (ddots) {$\dots$};
+  \node[right=of udots] (u3) {};
+  \node[right=of ddots] (d3) {};
+  \node[below right=of u3] (t) {$t$};
+
+  \path[-stealth] (s) edge (u1)
+                  (s) edge (d1)
+                  (u1) edge (u2)
+                  (u1) edge (d2)
+                  (d1) edge (u2)
+                  (d1) edge (d2)
+                  (udots) edge (u3)
+                  (dots) edge (u3)
+                  (dots) edge (d3)
+                  (ddots) edge (d3)
+                  (u3) edge (t)
+                  (d3) edge (t);
+  \path[-] (u2) edge (udots)
+           (u2) edge (dots)
+           (d2) edge (ddots)
+           (d2) edge (dots);
+\end{tikzpicture}

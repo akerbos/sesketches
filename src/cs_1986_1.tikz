@@ -1,0 +1,23 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{arrows,automata,positioning}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+  \node[state,initial]           (q0) {$q_0$};
+  \node[right=1.5cm of q0]       (a1) {$A_1$};
+  \node[state,right=1.5cm of a1] (q)  {$q$};
+  \node[right=1cm of q]          (a2) {$A_2$};
+  \node[right=0.75cm of a2]         (f)  {$F$};
+
+  \coordinate[above right=1.5cm and 1.5cm of q0] (a1o);
+  \coordinate[below right=1.5cm and 1.5cm of q0] (a1u);
+  \coordinate[above right=1.5cm and 1.5cm of q]  (a2o);
+  \coordinate[below right=1.5cm and 1.5cm of q]  (a2u);
+  \coordinate[right=0.5cm of a2o] (a2oo);
+  \coordinate[right=0.5cm of a2u] (a2uu);
+
+  \draw (q0)  -- (a1o) -- (q) -- (a1u) -- (q0)
+        (a2u) -- (q)   -- (a2o);
+
+  \draw[double] (a2o) -- (a2oo) -- (a2uu) -- (a2u) -- cycle;
+\end{tikzpicture}

@@ -1,0 +1,22 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{positioning}
+\begin{tikzpicture}[level 1/.style={sibling distance=10cm},level distance=10cm]
+  \node[draw,circle] (r) {$d$}
+    child { node[draw,circle] {$b$}
+              child { node[draw,circle] {$a$} }
+              child { node[draw,circle] {$c$} }
+          }
+    child { node[draw,circle] {$e$} };
+
+  \node[draw,circle,right=3cm of r] {$c$}
+    child { node[draw,circle] {$b$}
+              child { node[draw,circle] {$a$} }
+              child[opacity=0] { node {} }
+          }
+    child { node[draw,circle] {$e$}
+              child { node[draw,circle] {$d$} }
+              child[opacity=0] { node {} }
+          };
+\end{tikzpicture}

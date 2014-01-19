@@ -1,0 +1,40 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{positioning,automata,decorations.pathmorphing,decorations.pathreplacing}
+\begin{tikzpicture}[auto]
+  \node[state,initial,final]     (init)    {$0,0,0$};
+  \node[state,right=of init]     (a)       {$1,0,0$};
+  \node[state,right=of a]        (aa)      {$2,0,0$};
+  \node[right=of aa]             (adots)   {$\cdots$};
+  \node[state,right=of adots]    (an)      {$z',0,0$};  
+  
+  \node[state,below=of a]            (b1)  {$1,1,0$};
+  \node[state,accepting,below=of b1] (c1)  {$1,1,1$};
+  
+  \node[state,below=of aa]           (b2)  {$2,1,0$};
+  \node[state,below=of b2]           (bb2) {$2,2,0$};
+  \node[state,below=of bb2]          (c2)  {$2,2,1$};
+  \node[state,accepting,below=of c2] (cc2) {$2,2,2$};
+   
+  \node[below=of an]           (bndots)       {$\vdots$};
+  \node[state,below=of bndots] (bn)           {$z',z',0$};
+  \node[below=of bn]           (cndots)       {$\vdots$};
+  \node[state,accepting,below=of cndots] (cn) {$z',z',z'$};
+  
+  \draw[->] (init)  edge node {$a$} (a)
+            (a)     edge node {$a$} (aa)
+            (aa)    edge node {$a$} (adots)
+            (adots) edge node {$a$} (an)
+            (a)     edge node {$b$} (b1)
+            (b1)    edge node {$c$} (c1)
+            (aa)    edge node {$b$} (b2)
+            (b2)    edge node {$b$} (bb2)
+            (bb2)   edge node {$c$} (c2)
+            (c2)    edge node {$c$} (cc2)
+            (an)    edge node {$b$} (bndots)
+            (bndots)    edge node {$b$} (bn)
+            (bn)   edge node {$c$} (cndots)
+            (cndots)    edge node {$c$} (cn);
+
+\end{tikzpicture}

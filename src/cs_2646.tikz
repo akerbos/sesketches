@@ -1,0 +1,17 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{arrows,positioning}
+\begin{tikzpicture}[node distance=2cm,on grid,auto,bend angle=20]
+  \node[draw,circle]            (a) {$a$};
+  \node[draw,circle,right=of a] (b) {$b$};
+  \node[draw,circle,below=of a] (c) {$c$};
+  \node[draw,circle,below=of b] (d) {$d$};
+
+  \path[->] (a) edge (b)
+                edge (d)
+            (b) edge (d)
+                edge (c)
+            (c) edge (a)
+            (d) edge (c);
+\end{tikzpicture}

@@ -1,0 +1,34 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usepackage{makecell,nicefrac}
+%p% \usetikzlibrary{arrows,automata,positioning}
+\begin{tikzpicture}[shorten >=1pt,node distance=3.5cm,on grid,auto,state/.style=state with output]
+\tikzset{every state/.style={inner sep=0mm}}
+  \node[state,initial,initial where=above] (0) {%
+    \makecell[c]{$0$\vspace{0.5em}} \nodepart{lower} %
+    \makecell[c]{$\nicefrac{2}{3},\nicefrac{1}{3},$\\$0$} %
+  };
+  \node[state]         (1) [below left=3.5cm and 3.5cm of 0] {%
+    \makecell[c]{$1$\vspace{0.5em}}\nodepart{lower} %
+    \makecell[c]{$\nicefrac{1}{3},\nicefrac{1}{3},$\\$\nicefrac{1}{3}$}%
+  };
+  \node[state]         (2) [below=of 0]       {%
+    \makecell[c]{$2$\vspace{0.5em}} \nodepart{lower} %
+    \makecell[c]{$1,0,$\\$0$}%
+  };
+  \node[state]         (3) [below right=3.5cm and 3.5cm of 0] {%
+    \makecell[c]{$3$\vspace{0.5em}} \nodepart{lower} %
+    \makecell[c]{$\nicefrac{2}{3},0,$\\$\nicefrac{1}{3}$}%
+  };
+
+  \path[->] (0) edge [bend right] node [swap] {$\nicefrac{2}{3}$} (1)
+                edge []           node {$\nicefrac{1}{3}$} (2)
+                edge [bend left]  node {$0$} (3)
+            (1) edge [bend right] node [swap] {$\nicefrac{1}{3}$} (2)
+                edge [bend right=55]  node [] {$\nicefrac{1}{3}$} (3)
+            (2) edge [bend right] node [swap] {$0$} (1)
+                edge [bend right] node [swap] {$1$} (3)
+            (3) edge [bend right] node [swap] {$0$} (2)
+                edge [bend left=75] node [] {$\nicefrac{1}{3}$} (1);
+\end{tikzpicture}
