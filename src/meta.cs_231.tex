@@ -1,13 +1,15 @@
 % Raphael Reitzig, 2012.
 % MIT license
 
-\documentclass[a4paper,landscape]{article}
+% Convert to image by e.g.
+%   convert -density 600 meta.cs_231.pdf -resize ">650" meta.cs_231.png
+
+\documentclass[border=5pt]{standalone}
 \usepackage[utf8]{inputenc}
-\usepackage{xcolor}
 
 \begin{document}
 
-\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}} p{35mm} p{35mm} p{70mm} }
+\begin{tabular*}{15cm}{@{\extracolsep{\fill}} p{35mm} p{35mm} p{70mm} }
 Software & Buildings & General \\[2ex]
 \hline \\[-1ex]
 programmer          & construction worker     & performs assigned tasks \\[1ex]
@@ -20,8 +22,11 @@ computer scientist  & structural engineer,
                       material scientist      & develops and analyses methods/techniques
                                                 for the above to use. \\[1ex]
 theoretical computer
-scientist           & physicist               & develops and verifies principles that lead to
-                                                and support new methods and techniques.
+scientist           & physicist               & develops models and verifies principles that lead to
+                                                and support new methods and techniques.\\[1ex]
+
+mathematician       & mathematician           & provides means to deal with models in a unified,
+                                                abstract fashion. Develops meta models.
 \end{tabular*}
 
 \end{document}
