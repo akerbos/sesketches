@@ -1,0 +1,33 @@
+% Raphael Reitzig, 2012.
+% MIT license
+
+%p% \usetikzlibrary{positioning,trees}
+\begin{tikzpicture}[level 1/.style={sibling distance=7cm},level distance=7cm]
+  \node (a) {$2$}
+    child { node {$1$} }
+    child { node {$3$}
+      child[opacity=0] { node {} }
+      child { node {$4$} }
+    };
+
+  \node[right=1.5cm of a] (b) {$2$}
+    child { node {$1$} }
+    child { node {$4$}
+      child { node {$4$} }
+      child[opacity=0] { node {} }
+    };
+
+  \node[right=1.5cm of b] (c) {$3$}
+    child { node {$1$}
+      child[opacity=0] { node {} }
+      child { node {$2$} }
+    }
+    child { node {$4$} };
+
+  \node[right=1.5cm of c] (d) {$3$}
+    child { node {$2$}
+      child { node {$1$} }
+      child[opacity=0] { node {} }
+    }
+    child { node {$4$} };
+\end{tikzpicture}
