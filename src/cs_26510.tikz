@@ -13,7 +13,7 @@
   \node[right=1.5cm of a] (b) {$2$}
     child { node {$1$} }
     child { node {$4$}
-      child { node {$4$} }
+      child { node {$3$} }
       child[opacity=0] { node {} }
     };
 
