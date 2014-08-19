@@ -13,18 +13,16 @@
 
 \newcommand{\circscale}[2]{%
   \begin{tikzpicture}[baseline=nr.south]
+    % Calculate normalised numbers and corresponding drawing angle
     \pgfmathsetmacro{\ratio}{(#1/#2)*100}
     \pgfmathsetmacro{\intratio}{int(round((#1/#2)*100))}
     \pgfmathsetmacro{\angle}{360*(#1/#2) + 90}
   
+    % Draw the number
     \node[circle,inner sep=1pt,scale=0.75] (nr) {$\intratio$};
-    %\draw[blue,thick] (nr.north) arc[start angle=0,end angle=180];
-    \coordinate (A) at (nr.north);
-    \coordinate (B) at (nr.center);
-    \coordinate (C) at (nr.west);
-    %\draw pic[draw,green!\ratio!red,thick,angle radius=2mm] {angle = C--B--A};
     % Draw full circule to get positioning right
     \draw[opacity=0,very thick] (nr.north) arc (90:-270:2mm); 
+    % Draw the angle corresponding to the normalised number
     \draw[green!\ratio!red,very thick] (nr.north) arc (90:\angle:2mm);
   \end{tikzpicture}%
 }
