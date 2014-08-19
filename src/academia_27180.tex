@@ -1,0 +1,55 @@
+% Translate with pdflatex; then,
+%   convert -density 600 academia_27180.pdf -resize "500>x500" academia_27180.png
+\documentclass[multi={marray}]{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{angles}
+
+\newenvironment{marray}[1]{%
+  $\begin{array}{#1}
+}{%
+  \end{array}$
+}
+
+\newcommand{\circscale}[2]{%
+  \begin{tikzpicture}[baseline=nr.south]
+    \pgfmathsetmacro{\ratio}{(#1/#2)*100}
+    \pgfmathsetmacro{\intratio}{int(round((#1/#2)*100))}
+    \pgfmathsetmacro{\angle}{360*(#1/#2) + 90}
+  
+    \node[circle,inner sep=1pt,scale=0.75] (nr) {$\intratio$};
+    %\draw[blue,thick] (nr.north) arc[start angle=0,end angle=180];
+    \coordinate (A) at (nr.north);
+    \coordinate (B) at (nr.center);
+    \coordinate (C) at (nr.west);
+    %\draw pic[draw,green!\ratio!red,thick,angle radius=2mm] {angle = C--B--A};
+    % Draw full circule to get positioning right
+    \draw[opacity=0,very thick] (nr.north) arc (90:-270:2mm); 
+    \draw[green!\ratio!red,very thick] (nr.north) arc (90:\angle:2mm);
+  \end{tikzpicture}%
+}
+
+\def\max{250}
+
+\begin{document}
+  \begin{marray}{c|cccc}
+        & M_1 & M_2 & M_3 & M_4 \\
+    \hline
+    S_1 & 17  & 85  & 150 & 37  \\
+    S_2 & 25  & 105 & 163 & 65  \\
+    S_3 & 237 & 97  & 35  & 11  \\
+    S_4 & 184 & 109 & 18  & 47 
+  \end{marray}
+  \begin{marray}{c|cccc}
+        & M_1 & M_2 & M_3 & M_4 \\
+    \hline
+    S_1 & \circscale{17}{\max}  & \circscale{85}{\max}  
+        & \circscale{150}{\max} & \circscale{37}{\max}  \\
+    S_2 & \circscale{25}{\max}  & \circscale{105}{\max} 
+        & \circscale{163}{\max} & \circscale{65}{\max}  \\
+    S_3 & \circscale{237}{\max} & \circscale{97}{\max}  
+        & \circscale{35}{\max}  & \circscale{11}{\max}  \\
+    S_4 & \circscale{184}{\max} & \circscale{109}{\max} 
+        & \circscale{18}{\max}  & \circscale{47}{\max} 
+  \end{marray}
+\end{document}
