@@ -1,0 +1,31 @@
+% Raphael Reitzig, 2014.
+% MIT license
+
+%p% \usetikzlibrary{positioning,automata,arrows.meta}
+%p% \usepackage{nicefrac}
+\begin{tikzpicture}[auto,every edge/.append style={-{Stealth[length=5pt,width=5pt]}},
+                         every loop/.append style={every edge}]
+  \node[state,initial] (00) {$00$};
+  \node[state,above right=0.5 and 1 of 00] (10)           {$10$};
+  \node[state,below right=0.5 and 1 of 00] (01)           {$01$};
+  \node[state,above right=0.5 and 1 of 10] (20)           {$20$};
+  \node[state,below right=0.5 and 1 of 10,accepting] (11) {$11$};
+  \node[state,below right=0.5 and 1 of 01] (02)           {$02$};
+  
+  \path 
+    (00) edge node {$p_0$} (10) 
+    (00) edge node {$p_1$} (01)
+    (10) edge node {$p_0$} (20)
+    (10) edge node[swap] {$p_1$} (11)
+    (01) edge node {$p_0$} (11)
+    (01) edge node[swap] {$p_1$} (02)
+    (20) edge[loop above] node {$p_0$}
+    (20) edge[bend right] node[swap] {$p_1$} (11)
+    (02) edge[loop below] node {$p_1$}
+    (02) edge[bend left]  node {$p_0$} (11);
+    
+  \path[gray]
+    (11) edge[bend right] node[swap] {$\nicefrac{p_0}{2}$} (20)
+    (11) edge[loop right] node[align=center] {$\ \ \nicefrac{p_0}{2}$\\ $+\, \nicefrac{p_1}{2}$}
+    (11) edge[bend left]  node {$\nicefrac{p_1}{2}$} (02);
+\end{tikzpicture}
