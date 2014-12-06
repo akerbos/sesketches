@@ -1,0 +1,51 @@
+% Raphael Reitzig, 2014.
+% MIT license
+
+%p% \usetikzlibrary{positioning,arrows.meta,calc,decorations.pathreplacing}
+%p% \usepackage{xifthen}
+\begin{tikzpicture}[auto,x=10cm,y=5cm,scale=2,
+                    vertex/.style={draw,circle,inner sep=2pt},
+                    label/.style={scale=0.75,inner sep=2pt}]
+  % Draw vertices
+  \node[vertex,scale=0.75] (s) at (0,3) {$s$};
+  \foreach \x in {1,2,4,5} {%
+    \foreach \y in {1,2,4,5} {%
+      \node[vertex] (v\x\y) at (\x,\y) {};
+    }
+    \node (v{\x}3) at (\x,3.25) {$\vdots$};
+  }
+  \node (v33) at (3,3) {$\dots$};
+  \node[vertex,scale=0.75] (t) at (6,3) {$t$};
+
+  % Draw edges
+  \foreach \y in {1,2,4,5} {%
+    \path[-{Stealth[width=0.75mm,length=0.75mm]}]
+      % Draw s/t-edges
+      (s)    edge node[label] {$n^2$} (v1\y)
+      (v5\y) edge node[label] {$n^2$} (t)
+
+      % Draw full edges
+      \foreach \z in {1,2,4,5} {%
+        (v1\y) edge (v2\z)
+        (v4\y) edge (v5\z)
+      };
+
+    
+      % Draw stub edges
+      \foreach \z in {-5,0,5} {%
+        \path[draw,-]
+          (v2\y) -- ($(v2\y.east) + (10mm,\z mm)$);
+        \path[draw,{Stealth[width=0.75mm,length=0.75mm]}-]
+          (v4\y) -- ($(v4\y.west) + (-10mm,\z mm)$);
+      }
+  }
+
+  % Draw braces
+  \draw[decoration={brace,mirror},decorate]
+    ($(v11.west) + (0,-0.5)$) -- ($(v51.east) + (0,-0.5)$)
+      node[midway,swap] {$\sqrt{n}$};
+  \draw[decoration={brace,},decorate]
+    ($(v55.north) + (1.5,0)$) -- ($(v51.south) + (1.5,0)$)
+      node[midway] {$\sqrt{n}$};
+
+\end{tikzpicture}
