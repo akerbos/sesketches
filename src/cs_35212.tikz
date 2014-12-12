@@ -1,0 +1,27 @@
+% Raphael Reitzig, 2014.
+% MIT license
+
+%p% \usetikzlibrary{positioning,calc,decorations.pathreplacing}
+\begin{tikzpicture}[x=5cm,y=5cm,auto]
+  \coordinate (center);
+  \coordinate (innerref) at (1.8,0);
+  \coordinate (outerref) at (3,0);
+
+  \draw (innerref) -- ($(center)!1!30:(outerref)$)
+                   -- ($(center)!1!60:(innerref)$)
+                   -- ($(center)!1!90:(outerref)$)
+                   -- ($(center)!1!120:(innerref)$)
+                   -- ($(center)!1!150:(outerref)$)
+                   -- ($(center)!1!180:(innerref)$)
+                   -- ($(center)!1!210:(outerref)$)
+                   -- ($(center)!1!240:(innerref)$)
+                   -- ($(center)!1!270:(outerref)$)
+                   -- ($(center)!1!300:(innerref)$)
+                   -- ($(center)!1!330:(outerref)$)
+                   -- cycle;
+
+  \path[blue!50!black]   (center) edge node[pos=0.42,inner sep=2pt] {$r_i$}
+                         ($(center)!1!60:(innerref)$);
+  \path[orange!75!black] (center) edge node[pos=0.25,inner sep=2pt] {$r_o$}
+                         ($(center)!1!-30:(outerref)$);
+\end{tikzpicture}
