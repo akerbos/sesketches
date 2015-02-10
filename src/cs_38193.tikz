@@ -1,0 +1,39 @@
+% Raphael Reitzig, 2015.
+% MIT license
+
+%p% \usetikzlibrary{arrows.meta,automata,positioning}
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+  \node[state,initial]     (q0) {$q_0$};
+  \node[right=1cm of q]    (a)  {$A_L$};
+  \node[right=0.75cm of a] (f)  {$F$};
+  
+  \coordinate[above right=1.5cm and 1.5cm of q0] (a2o);
+  \coordinate[below right=1.5cm and 1.5cm of q0] (a2u);
+  \coordinate[right=0.5cm of a2o] (a2oo);
+  \coordinate[right=0.5cm of a2u] (a2uu);
+  
+  \path[draw] (q0) edge (a2u) 
+              (q0) edge (a2o);
+  \draw[double] (a2o) -- (a2oo) -- (a2uu) -- (a2u) -- cycle;
+\end{tikzpicture}
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+  \node[state,initial]           (q0) {$q_0$};
+  \node[right=1cm of q]          (a)  {$A_L$};
+  \node[right=0.75cm of a]       (f)  {$F$};
+  \node[state,below=2cm of (q0)] (s)  {$s$};
+  
+  \coordinate[above right=1.5cm and 1.5cm of q0] (a2o);
+  \coordinate[below right=1.5cm and 1.5cm of q0] (a2u);
+  \coordinate[right=0.5cm of a2o] (a2oo);
+  \coordinate[right=0.5cm of a2u] (a2uu);
+  
+  \path[draw] (q0) edge (a2u) 
+              (q0) edge (a2o);
+  \draw[double] (a2o) -- (a2oo) -- (a2uu) -- (a2u) -- cycle;
+  
+  \path[-{Stealth[width=1.5mm,length=1.5mm]}] 
+    (q0) edge node {$\varepsilon$} (s)
+    (s)  edge[loop below] node {$\Sigma$} (s);
+\end{tikzpicture}
