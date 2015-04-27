@@ -1,0 +1,47 @@
+% Raphael Reitzig, 2015.
+% MIT license
+
+%p% \usetikzlibrary{calc,positioning}
+%p% \pgfdeclarelayer{background}
+
+\begin{tikzpicture}[every node/.style={outer sep=0}]
+  \pgfsetlayers{background,main}
+  
+  \node[circle,minimum width=1cm] (P)   at (0,0)  {\textsf{P}};
+  
+  \node[circle,black!80,minimum width=1cm]  (NPI) at (-9,9) {\textsf{NPI}};
+  
+  \node[circle,minimum width=1cm] (NPC) at (-16,16) {\textsf{NPC}};
+  \node[circle,minimum width=1.5cm] (coNP) at ($(12,12) + (-3.5,0.5)$) {};%{\textsf{co-NP}};
+  
+  \node at (-16,24)  {\textsf{NP}};
+  \node at (8.5,23) {\textsf{co-NP}};
+  
+  \begin{pgfonlayer}{background}        
+    \draw[semi thick,black!80,fill=black,fill opacity=0.15] 
+      (P.south west) 
+        -- (NPI.south west)
+        arc[radius=5cm,start angle=225,delta angle=-180] 
+        -- (P.north east)
+        arc[radius=5cm,start angle=45,delta angle=180]
+        -- cycle;
+        
+    \draw[black,thick,fill=black,fill opacity=0.05]
+      (coNP.south east)
+        -- (P.south east)
+        arc[radius=5cm,start angle=315,delta angle=-90]
+        -- +(-2.5,2.5)
+        arc[radius=5cm,start angle=225,delta angle=-90]
+        -- (coNP.north west)
+        arc[radius=7.5,start angle=135,delta angle=-180]
+        -- cycle;
+        
+    \draw[black,thick] 
+      (P.south west) 
+        -- (NPC.south west)
+        arc[radius=5cm,start angle=225,delta angle=-180] 
+        -- (P.north east)
+        arc[radius=5cm,start angle=45,delta angle=-180]
+        -- cycle;
+  \end{pgfonlayer}
+\end{tikzpicture}
