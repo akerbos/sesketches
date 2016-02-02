@@ -4,6 +4,7 @@
   \definecolor{silver}{rgb}{0.77,0.77,0.77}
   \definecolor{gold}{rgb}{1,0.8,0}
   
+  % Trying different stub lengths
   \foreach \y/\len in {0/1,1/1.5,2/2,3/2.5,4/3} {%
     \node at (-1,\y) {v\y:};
     
@@ -17,4 +18,48 @@
     \draw[color=gold,badge] (2,\y) circle[radius=6pt]
       ++(-6pt,-6pt) -- +(-\len pt,-\len pt);
   }
+  
+  % My original proposal
+  \def\y{6}\def\len{1}
+  \node at (-1,\y) {v5:};
+  \draw[color=bronze,badge] (0,\y) circle[radius=6pt]
+      ++(0,8.5pt) -- +(0,\len pt); % 8.5 ~ sqrt(6^2 + 6^2)
+    
+    \draw[color=silver,badge] (1,\y) circle[radius=6pt]
+      +(0,8.5pt) -- +(0,8.5+\len pt)
+      +(0,-8.5pt) -- +(0,-8.5-\len pt);
+    
+    \draw[color=gold,badge] (2,\y) circle[radius=6pt]
+      +(-6pt,-6pt) -- +(-6-\len pt,-6-\len pt)
+      +(6pt,-6pt) -- +(6+\len pt,-6-\len pt);
+      
+  % LD (live design) with double gold
+  \def\y{7}\def\len{3}
+  \node at (-1,\y) {v6:};
+  \draw[color=bronze,badge] (0,\y) circle[radius=6pt]
+    ++(6pt,6pt) -- +(\len pt,\len pt);
+  
+  \draw[color=silver,badge] (1,\y) circle[radius=6pt]
+    +(6pt,6pt) -- +(6+\len pt,6+\len pt)
+    +(-6pt,-6pt) -- +(-6-\len pt,-6-\len pt);
+  
+  \draw[color=gold,badge] (2,\y) circle[radius=6pt]
+    +(-6pt,-6pt) -- +(-6-\len pt,-6-\len pt)
+    +(6pt,-6pt) -- +(6+\len pt,-6-\len pt);
+    
+  % LD (live design) with quadruple gold
+  \def\y{8}\def\len{3}
+  \node at (-1,\y) {v6:};
+  \draw[color=bronze,badge] (0,\y) circle[radius=6pt]
+    ++(6pt,6pt) -- +(\len pt,\len pt);
+  
+  \draw[color=silver,badge] (1,\y) circle[radius=6pt]
+    +(6pt,6pt) -- +(6+\len pt,6+\len pt)
+    +(-6pt,-6pt) -- +(-6-\len pt,-6-\len pt);
+  
+  \draw[color=gold,badge] (2,\y) circle[radius=6pt]
+    +(-6pt,-6pt) -- +(-6-\len pt,-6-\len pt)
+    +(6pt,-6pt) -- +(6+\len pt,-6-\len pt)
+    +(-6pt,6pt) -- +(-6-\len pt,6+\len pt)
+    +(6pt,6pt) -- +(6+\len pt,6+\len pt);
 \end{tikzpicture}
