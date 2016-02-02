@@ -5,7 +5,7 @@
   \definecolor{gold}{rgb}{1,0.8,0}
   
   % Trying different stub lengths
-  \foreach \y/\len in {0/1,1/1.5,2/2,3/2.5,4/3} {%
+  \foreach \y/\len in {-2/0,-1/0.5,0/1,1/1.5,2/2,3/2.5,4/3} {%
     \node at (-1,\y) {v\y:};
     
     \draw[color=bronze,badge] (0,\y) circle[radius=6pt]
@@ -20,7 +20,7 @@
   }
   
   % My original proposal
-  \def\y{6}\def\len{1}
+  \def\y{6}\def\len{0}
   \node at (-1,\y) {v5:};
   \draw[color=bronze,badge] (0,\y) circle[radius=6pt]
       ++(0,8.5pt) -- +(0,\len pt); % 8.5 ~ sqrt(6^2 + 6^2)
