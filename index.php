@@ -121,7 +121,7 @@
       <p>
         All files are subject to an <a href="http://opensource.org/licenses/MIT">MIT license</a>.
         <br/>
-         &copy; Raphael Reitzig 2014
+         &copy; Raphael Reitzig 2016
       </p>
     </div>
   </div></body>
